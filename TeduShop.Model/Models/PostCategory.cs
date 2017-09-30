@@ -25,7 +25,7 @@ namespace TeduShop.Model.Models
         public string Alias { get; set; }
 
         [MaxLength(500)]
-        public int? Description { get; set; }
+        public string Description { get; set; }
 
         [Required]
         public int? ParentID { get; set; }

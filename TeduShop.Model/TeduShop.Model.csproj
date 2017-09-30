@@ -63,7 +63,9 @@
     <Compile Include="Models\ProductTag.cs" />
     <Compile Include="Models\Slide.cs" />
     <Compile Include="Models\SupportOnline.cs" />
+    <Compile Include="Models\SystemConfig.cs" />
     <Compile Include="Models\Tag.cs" />
+    <Compile Include="Models\VisitorStatistic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -74,10 +76,6 @@
     <ProjectReference Include="..\TeduShop.Common\TeduShop.Common.csproj">
       <Project>{f84ced2e-c0d6-485b-abd9-7c870dfdcf3b}</Project>
       <Name>TeduShop.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TeduShop.Data\TeduShop.Data.csproj">
-      <Project>{c9c67758-1821-4f58-aeea-a0f02ceb665d}</Project>
-      <Name>TeduShop.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

@@ -45,6 +45,6 @@ namespace TeduShop.Model.Models
 
         public bool Status { get; set; }
 
-        public virtual IEnumerable<OderDetail> OrderDetails { get; set; }
+        public virtual IEnumerable<OrderDetail> OrderDetails { get; set; }
     }
 }
