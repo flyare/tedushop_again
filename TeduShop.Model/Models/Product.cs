@@ -15,9 +15,10 @@ namespace TeduShop.Model.Models
         [Required]
         [MaxLength(250)]
         public string Name { get; set; }
+
         [MaxLength(250)]
         public string Alias { get; set; }
-        
+
         public int CategoryID { get; set; }
         public string Image { get; set; }
         public XElement MoreImages { get; set; }
@@ -27,6 +28,7 @@ namespace TeduShop.Model.Models
 
         [MaxLength(250)]
         public string Description { get; set; }
+
         public string Content { get; set; }
         public bool? HomeFlag { get; set; }
         public bool? HotFlag { get; set; }
