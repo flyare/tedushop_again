@@ -16,10 +16,14 @@ namespace TeduShop.Model.Models
         [MaxLength(250)]
         public string Name { get; set; }
 
+        [Required]
+        [Column(TypeName = "varchar")]
         [MaxLength(250)]
         public string Alias { get; set; }
 
         public int CategoryID { get; set; }
+
+        [MaxLength(256)]
         public string Image { get; set; }
         public XElement MoreImages { get; set; }
         public decimal Price { get; set; }
