@@ -10,7 +10,7 @@ namespace TeduShop.Data.Repositories
     {
         IEnumerable<ProductCategory> GetByAlias(string alias);
     }
-    public class ProductCategoryRepository : RepositoryBase<ProductCategory>, IProductCategoryRepository
+    public class ProductCategoryRepository : IRepositoryBase<ProductCategory>, IProductCategoryRepository
     {
         protected ProductCategoryRepository(IDbFactory dbFactory) : base(dbFactory)
         {

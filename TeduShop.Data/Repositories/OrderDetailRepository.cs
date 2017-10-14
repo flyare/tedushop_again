@@ -8,14 +8,14 @@ using TeduShop.Model.Models;
 
 namespace TeduShop.Data.Repositories
 {
-    public interface IMenuGroupRepository: IRepository<MenuGroup>
+    public interface IOrderDetailRepository: IRepository<OrderDetail>
     {
 
     }
 
-    public class MenuGroupRepository : IRepositoryBase<MenuGroup>, IMenuGroupRepository
+    public class OrderDetailRepository : IRepositoryBase<OrderDetail>, IOrderDetailRepository
     {
-        protected MenuGroupRepository(IDbFactory dbFactory) : base(dbFactory)
+        protected OrderDetailRepository(IDbFactory dbFactory) : base(dbFactory)
         {
         }
     }
