@@ -12,7 +12,7 @@ namespace TeduShop.Data.Repositories
     {
 
     }
-    public class MenuRepository : IRepositoryBase<Footer>, IFooterRepository
+    public class MenuRepository : RepositoryBase<Footer>, IFooterRepository
     {
         protected MenuRepository(IDbFactory dbFactory) : base(dbFactory)
         {

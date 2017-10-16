@@ -13,7 +13,7 @@ namespace TeduShop.Data.Repositories
 
     }
 
-    public class OrderRepository : IRepositoryBase<Order>, IOrderRepository
+    public class OrderRepository : RepositoryBase<Order>, IOrderRepository
     {
         protected OrderRepository(IDbFactory dbFactory) : base(dbFactory)
         {

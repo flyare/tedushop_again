@@ -13,7 +13,7 @@ namespace TeduShop.Data.Repositories
 
     }
 
-    public class MenuGroupRepository : IRepositoryBase<MenuGroup>, IMenuGroupRepository
+    public class MenuGroupRepository : RepositoryBase<MenuGroup>, IMenuGroupRepository
     {
         protected MenuGroupRepository(IDbFactory dbFactory) : base(dbFactory)
         {

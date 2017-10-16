@@ -7,10 +7,11 @@ namespace TeduShop.Data.Repositories
     {
     }
 
-    public class PageRepository : IRepositoryBase<Page>, IPageRepository
+    public class PageRepository : RepositoryBase<Page>, IPageRepository
     {
         protected PageRepository(IDbFactory dbFactory) : base(dbFactory)
         {
+
         }
     }
 }
