@@ -62,5 +62,17 @@ namespace TeduShop.UnitTest.ServiceTest
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.ID);
         }
+
+        [TestMethod]
+        public void PostCategory_Service_Delete_By_Id()
+        {
+            var testDelete = new PostCategory { ID = 1, Name = "Category1", Status = true };
+            _mockRepository.Setup(m => m.Delete(testDelete.ID)).Returns(testDelete);
+
+            var result = _postCategoryService.Delete(1);
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(1, result.ID);
+        }
     }
 }
