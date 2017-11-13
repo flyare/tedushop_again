@@ -1,30 +1,30 @@
 ﻿using System.Reflection;
 using System.Web.Http;
 using System.Web.Mvc;
-using System.Web.Optimization;
-using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
+using Microsoft.Owin;
+using Owin;
 using TeduShop.Data;
 using TeduShop.Data.Infrastructure;
 using TeduShop.Data.Repositories;
 using TeduShop.Service;
+using TeduShop.Web.App_Start;
 
-namespace TeduShop.Web
+[assembly: OwinStartup(typeof(Startup))]
+
+namespace TeduShop.Web.App_Start
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class Startup
     {
-        protected void Application_Start()
+        public void Configuration(IAppBuilder app)
         {
-            AreaRegistration.RegisterAllAreas();
-            GlobalConfiguration.Configure(WebApiConfig.Register);
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=316888
+            ConfigAutofac(app);
         }
 
-        /*private void ConfigAutofac()
+        private void ConfigAutofac(IAppBuilder app)
         {
             var builder = new ContainerBuilder();
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
@@ -36,24 +36,20 @@ namespace TeduShop.Web
 
             builder.RegisterType<TeduShopDbContext>().AsSelf().InstancePerRequest();
 
-            /#1#/Asp.net Identity
-            builder.RegisterType<ApplicationUserStore>().As<IUserStore<ApplicationUser>>().InstancePerRequest();
-            builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
-            builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
-            builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
-            builder.Register(c => app.GetDataProtectionProvider()).InstancePerRequest();#1#
+            /* //Asp.net Identity
+             builder.RegisterType<ApplicationUserStore>().As<IUserStore<ApplicationUser>>().InstancePerRequest();
+             builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
+             builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
+             builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
+             builder.Register(c => app.GetDataProtectionProvider()).InstancePerRequest();*/
 
 
             // Repositories
-            /*builder.RegisterType<ErrorRepository>().As<IErrorRepository>().InstancePerRequest();
-            builder.RegisterType<PostCategoryRepository>().As<IPostCategoryRepository>().InstancePerRequest();#1#
             builder.RegisterAssemblyTypes(typeof(PostCategoryRepository).Assembly)
                 .Where(t => t.Name.EndsWith("Repository"))
                 .AsImplementedInterfaces().InstancePerRequest();
 
             // Services
-            /*builder.RegisterType<ErrorService>().As<IErrorService>().InstancePerRequest();
-            builder.RegisterType<PostCategoryService>().As<IPostCategoryService>().InstancePerRequest();#1#
             builder.RegisterAssemblyTypes(typeof(PostCategoryService).Assembly)
                 .Where(t => t.Name.EndsWith("Service"))
                 .AsImplementedInterfaces().InstancePerRequest();
@@ -63,6 +59,6 @@ namespace TeduShop.Web
 
             GlobalConfiguration.Configuration.DependencyResolver =
                 new AutofacWebApiDependencyResolver(container); //Set the WebApi DependencyResolver
-        }*/
+        }
     }
 }

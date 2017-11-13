@@ -3,10 +3,21 @@ namespace TeduShop.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialDB : DbMigration
+    public partial class InitializeDb : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Errors",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        Message = c.String(),
+                        StackTrace = c.String(),
+                        CreatedDate = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.ID);
+            
             CreateTable(
                 "dbo.Footers",
                 c => new
@@ -149,12 +160,19 @@ namespace TeduShop.Data.Migrations
                     {
                         ID = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false, maxLength: 256),
-                        Alias = c.String(nullable: false, maxLength: 250, unicode: false),
+                        Alias = c.String(nullable: false, maxLength: 256, unicode: false),
                         Description = c.String(maxLength: 500),
-                        ParentID = c.Int(nullable: false),
+                        ParentID = c.Int(),
                         DisplayOrder = c.Int(),
                         Image = c.String(maxLength: 256),
                         HomeFlag = c.Boolean(),
+                        CreatedDate = c.DateTime(),
+                        CreatedBy = c.String(maxLength: 225),
+                        UpdatedDate = c.DateTime(),
+                        UpdatedBy = c.String(maxLength: 225),
+                        MetaKeyword = c.String(maxLength: 225),
+                        MetaDescription = c.String(maxLength: 225),
+                        Status = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -172,6 +190,13 @@ namespace TeduShop.Data.Migrations
                         HomeFlag = c.Boolean(),
                         HotFlag = c.Boolean(),
                         ViewCount = c.Int(),
+                        CreatedDate = c.DateTime(),
+                        CreatedBy = c.String(maxLength: 225),
+                        UpdatedDate = c.DateTime(),
+                        UpdatedBy = c.String(maxLength: 225),
+                        MetaKeyword = c.String(maxLength: 225),
+                        MetaDescription = c.String(maxLength: 225),
+                        Status = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.PostCategories", t => t.CategoryID, cascadeDelete: true)
@@ -302,6 +327,7 @@ namespace TeduShop.Data.Migrations
             DropTable("dbo.Menus");
             DropTable("dbo.MenuGroups");
             DropTable("dbo.Footers");
+            DropTable("dbo.Errors");
         }
     }
 }
